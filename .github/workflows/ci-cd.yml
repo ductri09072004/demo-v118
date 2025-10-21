@@ -31,18 +31,7 @@ jobs:
     - name: Run tests
       run: |
         # Tạo test đơn giản nếu chưa có
-        python - <<'PY'
-import importlib,sys,os
-for m in ("app","main","server","index"):
-    try:
-        importlib.import_module(m)
-        print(f"Imported {m}")
-        break
-    except Exception as e:
-        pass
-else:
-    print("No importable app module; skipping smoke test")
-PY
+        python -c "import app; print('App imports successfully')"
         
     - name: Lint with flake8
       run: |
